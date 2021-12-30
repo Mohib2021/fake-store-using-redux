@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ShowProducts from "./ShowProducts";
-import { loadData } from "../../../Redux/Actions/Action";
 import { Container, Row } from "react-bootstrap";
+import {
+	fetchAllProducts,
+	fetchSingleProduct,
+} from "../../../Redux/Reducer/Reducer";
 function Products() {
 	const products = useSelector((state) => state.products.products);
 
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(loadData());
+		dispatch(fetchAllProducts());
 	}, []);
 	return (
 		<div className="my-5">

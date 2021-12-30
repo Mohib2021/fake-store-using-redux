@@ -3,7 +3,7 @@ import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { showDetails } from "../../../Redux/Actions/Action";
+import { fetchSingleProduct } from "../../../Redux/Reducer/Reducer";
 function ProductDetails() {
 	const product = useSelector((state) => state.products.details);
 	const { image, title, description, price } = product;
@@ -11,7 +11,7 @@ function ProductDetails() {
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(showDetails(id));
+		dispatch(fetchSingleProduct(id));
 	}, []);
 	if (!product.image) {
 		return (
